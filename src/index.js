@@ -1,11 +1,8 @@
-import _ from 'lodash';
+import Vue from 'vue'
 
-function component() {
-  let element = document.createElement('div');
-
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  return element;
-}
-
-document.body.appendChild(component());
+const app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello, PouchDB! (+ Vue)'
+  }
+})
