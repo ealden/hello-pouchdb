@@ -1,41 +1,53 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>Hello, PouchDB! (+ Vue)</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <div id="app">
-      <h1>Add New Entry</h1>
-      <label for="name">Name</label>
-      <input v-model="name"></input>
+    <main role="main" class="container">
+      <div id="app">
+        <h1>Hello, PouchDB! (+ Vue)</h1>
 
-      <br>
+        <form>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" v-model="name"></input>
+          </div>
 
-      <label for="description">Description</label>
-      <textarea rows="5" v-model="description"></textarea>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" rows="5" v-model="description"></textarea>
+          </div>
 
-      <br>
+          <button class="btn btn-primary" v-on:click="addEntry">Add Entry</button>
+        </form>
 
-      <button v-on:click="addEntry">Add Entry</button>
+        <table class="table table-stripped">
+          <thead class="thead-light">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="entry in entries">
+              <td>{{ entry.doc._id }}</td>
+              <td>{{ entry.doc.name }}</td>
+              <td>{{ entry.doc.description }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
 
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="entry in entries">
-            <td>{{ entry.doc._id }}</td>
-            <td>{{ entry.doc.name }}</td>
-            <td>{{ entry.doc.description }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
