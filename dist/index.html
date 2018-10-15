@@ -5,7 +5,18 @@
   </head>
   <body>
     <div id="app">
-      {{ message }}
+      <h1>Add New Entry</h1>
+      <label for="name">Name</label>
+      <input v-model="name"></input>
+
+      <br>
+
+      <label for="description">Description</label>
+      <textarea rows="5" v-model="description"></textarea>
+
+      <br>
+
+      <button v-on:click="addEntry">Add Entry</button>
     </div>
 
     <script src="main.js"></script>
