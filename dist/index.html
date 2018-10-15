@@ -14,7 +14,7 @@
       <div id="app">
         <h1>Hello, PouchDB! (+ Vue)</h1>
 
-        <form>
+        <form @submit.prevent="validateBeforeSubmit">
           <div class="form-group">
             <label for="name">Name</label>
             <input  name="name"

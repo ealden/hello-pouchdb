@@ -35,6 +35,13 @@ const app = new Vue({
         db.allDocs({include_docs: true, descending: true}, (err, doc) => {
           this.entries = doc.rows
         })
+    },
+    validateBeforeSubmit: function() {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          return
+        }
+      })
     }
   }
 })
