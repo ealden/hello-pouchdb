@@ -24,15 +24,12 @@ const app = new Vue({
 
       db.put(entry, (err, result) => {
         if (!err) {
-          console.log('Successfull added an entry!')
-
           this.listEntries()
         }
       })
     },
     listEntries: function() {
         db.allDocs({include_docs: true, descending: true}, (err, doc) => {
-          console.log(doc.rows)
           this.entries = doc.rows
         })
     }
