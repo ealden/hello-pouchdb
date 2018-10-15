@@ -1,5 +1,8 @@
 import Vue from 'vue'
+import VeeValidate from 'vee-validate'
 import PouchDB from 'pouchdb'
+
+Vue.use(VeeValidate)
 
 const db = new PouchDB('entries')
 const remoteCouch = false
