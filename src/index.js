@@ -8,7 +8,11 @@ const app = new Vue({
   el: '#app',
   data: {
     name: '',
-    description: ''
+    description: '',
+    entries: []
+  },
+  mounted: function() {
+    this.listEntries()
   },
   methods: {
     addEntry: function() {
@@ -18,11 +22,19 @@ const app = new Vue({
         description: this.description
       }
 
-      db.put(entry, function callback(err, result) {
+      db.put(entry, (err, result) => {
         if (!err) {
           console.log('Successfull added an entry!')
+
+          this.listEntries()
         }
       })
+    },
+    listEntries: function() {
+        db.allDocs({include_docs: true, descending: true}, (err, doc) => {
+          console.log(doc.rows)
+          this.entries = doc.rows
+        })
     }
   }
 })

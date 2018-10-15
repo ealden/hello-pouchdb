@@ -17,6 +17,23 @@
       <br>
 
       <button v-on:click="addEntry">Add Entry</button>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="entry in entries">
+            <td>{{ entry.doc._id }}</td>
+            <td>{{ entry.doc.name }}</td>
+            <td>{{ entry.doc.description }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <script src="main.js"></script>
