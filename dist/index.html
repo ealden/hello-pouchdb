@@ -43,7 +43,7 @@
           <button class="btn btn-primary" v-on:click="addEntry" :disabled="errors.any()">Add Entry</button>
         </form>
 
-        <table class="table table-stripped">
+        <table class="table table-stripped" v-if="entries.length > 0">
           <thead class="thead-light">
             <tr>
               <th>ID</th>
