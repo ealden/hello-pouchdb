@@ -19,6 +19,13 @@ const app = new Vue({
   },
   methods: {
     addEntry: function() {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          this.createEntry()
+        }
+      })
+    },
+    createEntry: function() {
       let entry = {
         _id: new Date().toISOString(),
         name: this.name,
@@ -32,15 +39,8 @@ const app = new Vue({
       })
     },
     listEntries: function() {
-        db.allDocs({include_docs: true, descending: true}, (err, doc) => {
-          this.entries = doc.rows
-        })
-    },
-    validateBeforeSubmit: function() {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          return
-        }
+      db.allDocs({include_docs: true, descending: true}, (err, doc) => {
+        this.entries = doc.rows
       })
     }
   }
